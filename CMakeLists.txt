@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10.2)
+add_custom_command(OUTPUT out1 COMMAND command1 git submodule update --remote)
+message("${out1}")
+project(gpio_demo)
+add_subdirectory(gpio_lib)
+add_executable(gpio_demo main.c)
+target_include_directories(gpio_demo PUBLIC gpio_lib)
+target_link_libraries(gpio_demo gpio_lib)
